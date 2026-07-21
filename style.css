@@ -1,0 +1,117 @@
+:root{
+  --bg:#f0f4ff; --card:#fff; --text:#1a1a1a; --muted:#666; 
+  --accent:#3b82f6; --pink:#ec4899; --border:#ddd;
+}
+[data-theme="dark"]{ 
+  --bg:#0f172a; --card:#1e293b; --text:#f1f5f9; --muted:#94a3b8; 
+  --accent:#3b82f6; --pink:#ec4899; --border:#334155;
+}
+
+[data-theme="high"]{ 
+  --bg:#000;       /* Background: Kala */
+  --card:#111;     /* Card: Thora halka kala */
+  --text:#fff;     /* Text: Safaid */
+  --muted:#ff0;    /* Muted: Peela */
+  --accent:#ff0;   /* Accent: Peela */
+  --pink:pink;     /* Pink: Cyan */
+  --border:#fff;   /* Border: Safaid */
+}
+
+/* NAYA CODE: High theme me peele button ka text kala */
+[data-theme="high"] button{
+  color: #000; /* Text kala */
+  font-weight: 600; /* Thora mota */
+}
+[data-theme="high"] button.danger{
+  color: #000; /* Delete button ka text bhi kala */
+}
+[data-theme="high"] .card .badge{
+  background: var(--pink); /* Cyan bg */
+  color: #000; /* Text kala */
+  font-weight: 600;
+}
+
+*{box-sizing:border-box; font-family: system-ui, sans-serif}
+body{margin:0; background:var(--bg); color:var(--text); font-size:14px}
+
+/* BUTTONS */
+button{background:var(--accent); color:#fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; font-size:14px; white-space:nowrap}
+button:hover{opacity:.9}
+button.danger{background:var(--pink)}
+
+/* LOGIN */
+#login{display:flex; align-items:center; justify-content:center; height:100vh; flex-direction:column; gap:10px; padding:20px}
+#login h2{font-size:24px; margin:0}
+#login input, #login select{padding:10px; width:100%; max-width:320px; border:1px solid var(--border); border-radius:6px; background:var(--card); color:var(--text)}
+
+/* HEADER */
+header{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; padding:12px 16px; background:var(--card); position:sticky; top:0; z-index:5; box-shadow:0 2px 4px rgba(0,0,0,.1)}
+header .left, header .right{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+header input, header select{padding:6px 8px; border:1px solid var(--border); border-radius:4px; background:var(--bg); color:var(--text)}
+.theme-switch{display:flex; gap:5px}
+.theme-switch button{padding:5px 8px; font-size:12px}
+
+/* BOARD - KANBAN */
+#board{display:flex; gap:12px; padding:16px; overflow-x:auto; scroll-snap-type:x mandatory}
+.column{min-width:280px; width:280px; background:var(--card); border-radius:8px; padding:10px; scroll-snap-align:start; flex-shrink:0}
+.column h3{margin:0 0 10px; font-size:14px; color:var(--muted); display:flex; justify-content:space-between}
+.dropzone{min-height:100px}
+.card{background:var(--bg); padding:10px; border-radius:6px; margin-bottom:8px; border-left:4px solid var(--accent)}
+.card .badge{font-size:10px; padding:2px 6px; border-radius:4px; background:var(--pink); color:#fff; margin-left:5px}
+.card-actions{display:flex; gap:5px; margin-top:6px; flex-wrap:wrap}
+.card-actions button{font-size:12px; padding:5px 8px}
+
+/* MODAL */
+.modal{position:fixed; inset:0; background:rgba(0,0,0,.6); display:none; align-items:center; justify-content:center; z-index:10; padding:20px}
+.modal-content{background:var(--card); padding:20px; border-radius:8px; width:100%; max-width:550px; max-height:90vh; overflow-y:auto}
+.modal-content input, .modal-content textarea, .modal-content select{width:100%; padding:8px; margin:6px 0; background:var(--bg); color:var(--text); border:1px solid var(--border); border-radius:4px}
+.row{display:flex; gap:8px; flex-wrap:wrap}
+.timer-box{margin:10px 0; padding:8px; background:var(--bg); border-radius:6px}
+#liveIndicator{color:var(--pink); font-size:12px; margin-top:5px}
+.subtask{display:flex; gap:5px; align-items:center; margin-bottom:5px}
+.subtask input[type="text"]{flex:1}
+
+/* ANALYTICS */
+#analytics{padding:16px}
+#analytics h3{margin-top:0}
+#stats{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px; font-size:13px}
+#burndown{width:100%; height:200px; background:var(--card); border-radius:8px}
+
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* TABLET: 768px se kam */
+@media(max-width:768px){
+  body{font-size:13px}
+  header{padding:10px 12px}
+  header .right{width:100%; justify-content:space-between}
+  header input{width:100px}
+  
+  #board{flex-direction:column; overflow-x:visible; padding:12px}
+  .column{width:100%; min-width:100%}
+  
+  .modal{padding:10px}
+  .modal-content{padding:15px}
+}
+
+/* MOBILE: 480px se kam */
+@media(max-width:480px){
+  body{font-size:12px}
+  #login h2{font-size:20px}
+  
+  header{flex-direction:column; align-items:stretch}
+  header .left, header .right{justify-content:center}
+  header input, header select{flex:1; min-width:0}
+  
+  #board{padding:8px; gap:8px}
+  .column{padding:8px}
+  
+  .card-actions button{flex:1; min-width:60px}
+  
+  #burndown{height:150px}
+}
+
+/* BARA SCREEN: 1200px se zyada */
+@media(min-width:1200px){
+  #board{justify-content:center}
+  .column{width:320px}
+}
