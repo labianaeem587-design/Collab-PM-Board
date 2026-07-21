@@ -10,7 +10,7 @@ let timerSeconds = 0;
 document.getElementById('loginBtn').onclick = () => {
   const name = document.getElementById('username').value.trim();
   const role = document.getElementById('role').value;
-  if(!name) return alert("Username likho");
+  if(!name) return alert("Enter username");
   currentUser = {name, role, lastActive: Date.now()};
   localStorage.setItem(USER_KEY, JSON.stringify(currentUser));
   showApp();
